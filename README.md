@@ -113,7 +113,6 @@ SyntaxAnime integrates with the following APIs:
 - Advanced search and discovery
 
 ### Phase 4
-- Mobile applications
 - Offline reading
 - Personalized recommendations
 
