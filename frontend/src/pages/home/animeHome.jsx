@@ -166,7 +166,6 @@ const AnimeContent = () => {
   const [loadingMore, setLoadingMore] = useState(false);
 
   useEffect(() => {
-    // Reset when tab changes
     setAnimeData([]);
     setPage(1);
     setHasMore(true);
@@ -188,18 +187,14 @@ const AnimeContent = () => {
       );
       const result = await response.json();
 
-      // Check if we have more pages
       setHasMore(result.pagination?.has_next_page ?? false);
 
-      // Filter out duplicates and append or set new data
       const newData = result.data || [];
       setAnimeData((prevData) => {
         if (isNewCategory) return newData;
 
-        // Create a Set of existing IDs for faster lookup
         const existingIds = new Set(prevData.map((anime) => anime.mal_id));
 
-        // Filter out any duplicates from the new data
         const uniqueNewData = newData.filter(
           (anime) => !existingIds.has(anime.mal_id)
         );
