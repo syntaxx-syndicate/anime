@@ -171,7 +171,6 @@ const MangaHome = () => {
         console.error("Error fetching news:", err);
         setError((prev) => ({ ...prev, news: "Failed to load news items" }));
 
-        // Fallback to static news if API fails
         setNewsItems([
           {
             id: 1,
@@ -208,7 +207,6 @@ const MangaHome = () => {
     fetchNewsItems();
   }, []);
 
-  // Helper function to generate random time periods for "updated X time ago"
   const getRandomTimeAgo = () => {
     const times = [
       "1 hour ago",
