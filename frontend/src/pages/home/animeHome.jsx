@@ -220,7 +220,6 @@ const AnimeContent = () => {
 
   return (
     <div className="px-4 py-4 lg:px-8">
-      {/* Category Tabs */}
       <Tabs value={activeTab} className="mb-2 bg-transparent">
         <TabsHeader className="bg-transparent">
           <Tab value="top" onClick={() => setActiveTab("top")}>
@@ -277,7 +276,6 @@ const AnimeContent = () => {
             ))}
           </div>
 
-          {/* Load More Button */}
           {hasMore && (
             <div className="mt-8 flex justify-center">
               <Button
