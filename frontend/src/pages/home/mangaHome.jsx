@@ -50,9 +50,7 @@ const MangaHome = () => {
     news: null,
   });
 
-  // Fetch data from APIs
   useEffect(() => {
-    // Fetch featured manga
     const fetchFeaturedManga = async () => {
       try {
         const response = await fetch(
@@ -85,10 +83,8 @@ const MangaHome = () => {
       }
     };
 
-    // Fetch manga lists (trending, latest, popular)
     const fetchMangaLists = async () => {
       try {
-        // In a real app, you might have different endpoints for each category
         const [trendingRes, popularRes] = await Promise.all([
           fetch(
             "https://api.jikan.moe/v4/top/manga?filter=bypopularity&limit=5"
@@ -99,8 +95,6 @@ const MangaHome = () => {
         const trendingData = await trendingRes.json();
         const popularData = await popularRes.json();
 
-        // For latest, we'd typically use a different endpoint
-        // Using a timeout to simulate staggered API calls to avoid rate limiting
         setTimeout(async () => {
           try {
             const latestRes = await fetch(
@@ -136,7 +130,7 @@ const MangaHome = () => {
               chapters: manga.chapters || "??",
               rating: manga.score / 2 || 4.5,
             })),
-            latest: [], // Will be populated by the delayed call
+            latest: [], 
             popular: popularData.data.map((manga) => ({
               id: manga.mal_id,
               title: manga.title,
@@ -154,7 +148,6 @@ const MangaHome = () => {
       }
     };
 
-    // Fetch news items
     const fetchNewsItems = async () => {
       try {
         const response = await fetch("https://api.jikan.moe/v4/anime/news");
